@@ -32,7 +32,7 @@
     "@babel/runtime": "7",
     "@floating-ui/react": "^0.26.6",
     "@svgr/webpack": "^8.1.0",
-    "axios": "^1.7.4",
+    "axios": "0.26.1",
     "babel-loader": "8",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-js-logger": "^1.0.17",
