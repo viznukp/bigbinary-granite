@@ -3,9 +3,12 @@ import React from "react";
 import classnames from "classnames";
 import { Link, useLocation } from "react-router-dom";
 
+import { getFromLocalStorage } from "utils/storage";
+
 import GraniteLogo from "./GraniteLogo";
 
 const NavBar = () => {
+  const userName = getFromLocalStorage("authUserName");
   const location = useLocation();
 
   return (
@@ -19,7 +22,7 @@ const NavBar = () => {
           </div>
           <div className="flex items-center gap-x-4">
             <Link
-              to="/dashboard"
+              to="/"
               className={classnames("text-sm font-medium text-gray-800", {
                 "text-indigo-600": location.pathname === "/dashboard",
               })}
@@ -31,6 +34,9 @@ const NavBar = () => {
               to="/tasks/create"
             >
               Add new task
+            </Link>
+            <Link className="flex items-center gap-x-1 rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-300 focus:shadow">
+              <span className="block">{userName}</span>
             </Link>
           </div>
         </div>
