@@ -71,6 +71,8 @@ class ApplicationController < ActionController::Base
     render status:, json:
   end
 
+  rescue_from Pundit::NotAuthorizedError, with: :handle_authorization_error
+
   private
 
     def authenticate_user_using_x_auth_token
@@ -89,5 +91,11 @@ class ApplicationController < ActionController::Base
 
     def current_user
       @current_user
+    end
+
+    include Pundit::Authorization
+
+    def handle_authorization_error
+      render_error(t("authorization.denied"), :forbidden)
     end
 end
