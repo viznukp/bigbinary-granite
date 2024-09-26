@@ -30,6 +30,12 @@ class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors) unless ENV["COVERAGE"]
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  # fixtures :all
+  def headers(user, options = {})
+    {
+      Accept: "application/json",
+      "Content_Type" => "application/json",
+      "X-Auth-Token" => user.authentication_token,
+      "X-Auth-Email" => user.email
+    }.merge(options)
+  end
 end
