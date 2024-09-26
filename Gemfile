@@ -48,6 +48,12 @@ group :development, :test do
   # For code formatting and linting
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
+
+  # Rails integration for factory_bot, a replacement for fixtures
+  gem "factory_bot_rails"
+
+  # For auto-generating demo data
+  gem "faker"
 end
 
 group :development do
@@ -65,7 +71,7 @@ group :development do
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "minitest-bisect"
 end
 
 # Following are added by me
@@ -81,13 +87,5 @@ gem "pry-byebug"
 gem "bcrypt", "~> 3.1.13"
 
 gem "simplecov", require: false, group: :test
-
-group :development, :test do
-  # Rails integration for factory_bot, a replacement for fixtures
-  gem "factory_bot_rails"
-
-  # For auto-generating demo data
-  gem "faker"
-end
 
 gem "pundit"
