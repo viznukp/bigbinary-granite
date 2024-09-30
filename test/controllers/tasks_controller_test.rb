@@ -105,6 +105,8 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
     get task_path(invalid_slug), headers: @creator_headers
     assert_response :not_found
+
+    response_json = response.parsed_body
     assert_equal I18n.t("not_found", entity: "Task"), response_json["error"]
   end
 end
