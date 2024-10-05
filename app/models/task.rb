@@ -5,6 +5,8 @@ class Task < ApplicationRecord
   VALID_TITLE_REGEX = /\A.*[a-zA-Z0-9].*\z/i
   RESTRICTED_ATTRIBUTES = %i[title task_owner_id assigned_user_id]
 
+  scope :accessible_to, ->(user_id) { where("task_owner_id = ? OR assigned_user_id = ?", user_id, user_id) } # rubocop:disable Layout/ClassStructure
+
   enum :progress, { pending: "pending", completed: "completed" }, default: :pending
   enum :status, { unstarred: "unstarred", starred: "starred" }, default: :unstarred
 
